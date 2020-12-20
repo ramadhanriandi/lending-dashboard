@@ -3,26 +3,26 @@ import React from 'react';
 import reduxMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { initialState } from '@store';
-import Dashboard from './Dashboard.container';
+import TransactionForm from './TransactionForm.container';
 
-describe('Dashboard', () => {
+describe('TransactionForm', () => {
     const mockStore = reduxMockStore(),
-        renderDashboard = (store: ReturnType<typeof mockStore>) =>
+        renderTransactionForm = (store: ReturnType<typeof mockStore>) =>
             renderWithRouter(
                 <Provider store={store}>
-                    <Dashboard />
+                    <TransactionForm />
                 </Provider>
             );
 
     it('should render properly', () => {
-        const store = mockStore({ ...initialState, loading: { dashboard: { isLoading: false } } });
-        const { container } = renderDashboard(store);
+        const store = mockStore({ ...initialState, loading: { transactionForm: { isLoading: false } } });
+        const { container } = renderTransactionForm(store);
         expect(container).toMatchSnapshot();
     });
 
     it('should show loading if isLoading Prop is true', () => {
-        const store = mockStore({ ...initialState, loading: { dashboard: { isLoading: true } } });
-        const { container } = renderDashboard(store);
+        const store = mockStore({ ...initialState, loading: { transactionForm: { isLoading: true } } });
+        const { container } = renderTransactionForm(store);
         expect(container).toMatchSnapshot();
     });
 });
