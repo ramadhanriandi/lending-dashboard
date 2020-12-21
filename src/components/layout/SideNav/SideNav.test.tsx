@@ -16,7 +16,7 @@ describe('SideNav', () => {
 
     it('should call history.push on click on dashboard', async () => {
         const { getByText } = renderWithRouter(<SideNav />);
-        fireEvent.click(getByText('Dashboard'));
+        fireEvent.click(getByText('Member List'));
         expect(mockHistoryPush).toHaveBeenCalledWith('/');
     });
 });
