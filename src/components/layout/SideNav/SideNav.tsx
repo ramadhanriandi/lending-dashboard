@@ -29,7 +29,7 @@ export const SideNav: React.SFC & WithStyle = React.memo(() => {
                 </Styled.MedlySideNavItem>
                 <Styled.MedlySideNavItem path="/user-transactions">
                     <AssignmentIndIcon />
-                    <Text>User's Transactions</Text>
+                    <Text>User&apos;s Transactions</Text>
                 </Styled.MedlySideNavItem>
             </MedlySideNav.List>
         </MedlySideNav>

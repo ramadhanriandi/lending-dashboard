@@ -1,12 +1,31 @@
-import { PageContent } from '@components/layout';
-import { Text } from '@medly-components/core';
+import { PageContent, Title } from '@components/layout';
+import { Form } from '@medly-components/forms';
 import React from 'react';
+import { SCHEMA } from './constants';
 import { Props } from './types';
 
 export const TransactionForm: React.SFC<Props> = ({ isLoading }) => (
     <PageContent isLoading={isLoading}>
-        <Text textWeight="Strong" textVariant="body1">
-            Transaction Form
-        </Text>
+        <Title text="Transaction Form" />
+        <Form
+            fieldSchema={SCHEMA}
+            actionSchema={{
+                alignItems: 'right',
+                flexDirection: 'row',
+                actions: [
+                    {
+                        type: 'reset',
+                        variant: 'flat',
+                        label: 'Clear'
+                    },
+                    {
+                        type: 'submit',
+                        edges: 'rounded',
+                        label: 'Submit'
+                    }
+                ]
+            }}
+            onSubmit={values => console.log('Values==>', values)}
+        />
     </PageContent>
 );
