@@ -6,27 +6,27 @@ import { Props } from './types';
 
 const tableData = [
     {
-        user_id: '1',
+        userId: '1',
         name: 'First',
-        birth_date: '12 Desember 2020',
+        birthDate: '12 Desember 2020',
         address: 'Jalan Kubang'
     },
     {
-        user_id: '2',
+        userId: '2',
         name: 'First',
-        birth_date: '12 Desember 2020',
+        birthDate: '12 Desember 2020',
         address: 'Jalan Kubang'
     },
     {
-        user_id: '3',
+        userId: '3',
         name: 'First',
-        birth_date: '12 Desember 2020',
+        birthDate: '12 Desember 2020',
         address: 'Jalan Kubang'
     },
     {
-        user_id: '4',
+        userId: '4',
         name: 'First',
-        birth_date: '12 Desember 2020',
+        birthDate: '12 Desember 2020',
         address: 'Jalan Kubang'
     }
 ];
