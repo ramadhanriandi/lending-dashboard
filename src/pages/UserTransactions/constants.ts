@@ -3,7 +3,7 @@ import { FormFieldSchema } from '@medly-components/forms';
 
 export const COLUMNS: TableColumnConfig[] = [
     { title: 'Date', field: 'date' },
-    { title: 'Transaction Type', field: 'transaction_type' },
+    { title: 'Transaction Type', field: 'transactionType' },
     { title: 'Amount', field: 'amount' }
 ];
 

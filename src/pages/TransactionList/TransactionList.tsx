@@ -10,25 +10,25 @@ const tableData = [
     {
         date: '12 Desember 2020',
         name: 'Name',
-        transaction_type: 'Menyerahkan',
+        transactionType: 'Menyerahkan',
         amount: 100000
     },
     {
         date: '12 Desember 2020',
         name: 'Name',
-        transaction_type: 'Mengambil',
+        transactionType: 'Mengambil',
         amount: 100000
     },
     {
         date: '12 Desember 2020',
         name: 'Name',
-        transaction_type: 'Mengembalikan',
+        transactionType: 'Mengembalikan',
         amount: 100000
     },
     {
         date: '12 Desember 2020',
         name: 'Name',
-        transaction_type: 'Meminjam',
+        transactionType: 'Meminjam',
         amount: 100000
     }
 ];
