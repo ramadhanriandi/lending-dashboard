@@ -12,7 +12,7 @@ describe('Routes', () => {
                 <Routes />
             </MemoryRouter>
         );
-        const dashboard = await findByText('Dashboard Content', {}, { timeout: 5000 });
+        const dashboard = await findByText('Member List', {}, { timeout: 5000 });
         expect(dashboard).toBeInTheDocument();
     });
 });

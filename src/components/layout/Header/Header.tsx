@@ -8,11 +8,11 @@ export const Header: React.SFC & WithStyle = () => {
         <Styled.Header>
             <Styled.LeftSide>
                 <Text textWeight="Strong" textVariant="h4">
-                    Boilerplate
+                    Lending Dashboard
                 </Text>
             </Styled.LeftSide>
             <Styled.RightSide>
-                <Avatar size="M">JD</Avatar>
+                <Avatar size="M">RR</Avatar>
             </Styled.RightSide>
         </Styled.Header>
     );
