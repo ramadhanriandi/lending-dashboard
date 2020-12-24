@@ -1,10 +1,18 @@
-import { AppState } from '@store';
 import { connect } from 'react-redux';
-import { StateProps } from './types';
-import { MemberList } from './MemberList';
 
-const mapStateToProps = ({ loading }: AppState): StateProps => ({
-    isLoading: loading.memberList.isLoading
+import { AppState } from '@store';
+import { getUsers } from '@store/user';
+
+import { MemberList } from './MemberList';
+import { DispatchProps, StateProps } from './types';
+
+const mapStateToProps = ({ loading, user }: AppState): StateProps => ({
+    isLoading: loading.memberList.isLoading,
+    members: user.data
 });
 
-export default connect<StateProps, {}>(mapStateToProps, {})(MemberList);
+const mapDispatchToProps: DispatchProps = {
+    getMembers: getUsers
+};
+
+export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(MemberList);
