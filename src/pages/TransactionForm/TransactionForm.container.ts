@@ -1,10 +1,20 @@
-import { AppState } from '@store';
 import { connect } from 'react-redux';
-import { StateProps } from './types';
-import { TransactionForm } from './TransactionForm';
 
-const mapStateToProps = ({ loading }: AppState): StateProps => ({
-    isLoading: loading.transactionForm.isLoading
+import { AppState } from '@store';
+import { addTransaction } from '@store/transaction';
+import { getUsers } from '@store/user';
+
+import { TransactionForm } from './TransactionForm';
+import { DispatchProps, StateProps } from './types';
+
+const mapStateToProps = ({ loading, user }: AppState): StateProps => ({
+    isLoading: loading.transactionForm.isLoading,
+    members: user.data
 });
 
-export default connect<StateProps, {}>(mapStateToProps, {})(TransactionForm);
+const mapDispatchToProps: DispatchProps = {
+    getMembers: getUsers,
+    postTransaction: addTransaction
+};
+
+export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(TransactionForm);

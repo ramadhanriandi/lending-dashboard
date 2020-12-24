@@ -1,42 +1,46 @@
+import React, { useEffect, useState } from 'react';
+
 import { PageContent, Title } from '@components/layout';
 import { Table } from '@medly-components/core';
-import { Form } from '@medly-components/forms';
-import React, { useState } from 'react';
+import { Form, FormFieldSchema } from '@medly-components/forms';
+
 import * as Styled from './UserTransactions.styled';
 import { COLUMNS, SCHEMA } from './constants';
 import { Props } from './types';
 
-const tableData = [
-    {
-        date: '12 Desember 2020',
-        transactionType: 'Menyerahkan',
-        amount: 100000
-    },
-    {
-        date: '12 Desember 2020',
-        transactionType: 'Mengambil',
-        amount: 100000
-    },
-    {
-        date: '12 Desember 2020',
-        transactionType: 'Mengembalikan',
-        amount: 100000
-    },
-    {
-        date: '12 Desember 2020',
-        transactionType: 'Meminjam',
-        amount: 100000
-    }
-];
+export const UserTransactions: React.SFC<Props> = props => {
+    const { getMembers, getTransactions, isLoading, members, transactions } = props;
 
-export const UserTransactions: React.SFC<Props> = ({ isLoading }) => {
     const [open, setOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        members.length === 0 && getMembers();
+    }, []);
+
+    const schema: FormFieldSchema = {
+        name: {
+            type: 'single-select',
+            label: 'Name',
+            options: _.map(members, member => {
+                return {
+                    label: member.name,
+                    value: member.userId
+                };
+            }),
+            required: true
+        }
+    };
+
+    const handleSubmit = (values: object): void => {
+        getTransactions(values.name);
+        setOpen(true);
+    };
 
     return (
         <PageContent isLoading={isLoading}>
             <Title text="User Transactions" />
             <Form
-                fieldSchema={SCHEMA}
+                fieldSchema={schema}
                 actionSchema={{
                     alignItems: 'right',
                     flexDirection: 'row',
@@ -53,11 +57,11 @@ export const UserTransactions: React.SFC<Props> = ({ isLoading }) => {
                         }
                     ]
                 }}
-                onSubmit={() => setOpen(true)}
+                onSubmit={values => handleSubmit(values)}
             />
             {open && (
                 <Styled.TableWrapper>
-                    <Table data={tableData} columns={COLUMNS} />
+                    <Table data={transactions} columns={COLUMNS} />
                 </Styled.TableWrapper>
             )}
         </PageContent>

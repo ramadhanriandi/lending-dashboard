@@ -1,10 +1,21 @@
-import { AppState } from '@store';
 import { connect } from 'react-redux';
-import { StateProps } from './types';
-import { UserTransactions } from './UserTransactions';
 
-const mapStateToProps = ({ loading }: AppState): StateProps => ({
-    isLoading: loading.userTransactions.isLoading
+import { AppState } from '@store';
+import { getUserTransactions } from '@store/transaction';
+import { getUsers } from '@store/user';
+
+import { UserTransactions } from './UserTransactions';
+import { DispatchProps, StateProps } from './types';
+
+const mapStateToProps = ({ loading, user, transaction }: AppState): StateProps => ({
+    isLoading: loading.userTransactions.isLoading,
+    members: user.data,
+    transactions: transaction.userTransactions
 });
 
-export default connect<StateProps, {}>(mapStateToProps, {})(UserTransactions);
+const mapDispatchToProps: DispatchProps = {
+    getMembers: getUsers,
+    getTransactions: getUserTransactions
+};
+
+export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(UserTransactions);

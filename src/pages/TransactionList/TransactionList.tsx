@@ -1,40 +1,24 @@
+import React, { useState } from 'react';
+
 import { PageContent, Title } from '@components/layout';
 import { Table } from '@medly-components/core';
 import { Form } from '@medly-components/forms';
-import React, { useState } from 'react';
+
 import * as Styled from './TransactionList.styled';
 import { COLUMNS, SCHEMA } from './constants';
 import { Props } from './types';
 
-const tableData = [
-    {
-        date: '12 Desember 2020',
-        name: 'Name',
-        transactionType: 'Menyerahkan',
-        amount: 100000
-    },
-    {
-        date: '12 Desember 2020',
-        name: 'Name',
-        transactionType: 'Mengambil',
-        amount: 100000
-    },
-    {
-        date: '12 Desember 2020',
-        name: 'Name',
-        transactionType: 'Mengembalikan',
-        amount: 100000
-    },
-    {
-        date: '12 Desember 2020',
-        name: 'Name',
-        transactionType: 'Meminjam',
-        amount: 100000
-    }
-];
+export const TransactionList: React.SFC<Props> = props => {
+    const { getTransactions, isLoading, transactions } = props;
 
-export const TransactionList: React.SFC<Props> = ({ isLoading }) => {
     const [open, setOpen] = useState<boolean>(false);
+
+    const handleSubmit = (values: object): void => {
+        if (values.range) {
+            getTransactions(values.range);
+            setOpen(true);
+        }
+    };
 
     return (
         <PageContent isLoading={isLoading}>
@@ -57,11 +41,11 @@ export const TransactionList: React.SFC<Props> = ({ isLoading }) => {
                         }
                     ]
                 }}
-                onSubmit={() => setOpen(true)}
+                onSubmit={values => handleSubmit(values)}
             />
             {open && (
                 <Styled.TableWrapper>
-                    <Table data={tableData} columns={COLUMNS} />
+                    <Table data={transactions} columns={COLUMNS} />
                 </Styled.TableWrapper>
             )}
         </PageContent>

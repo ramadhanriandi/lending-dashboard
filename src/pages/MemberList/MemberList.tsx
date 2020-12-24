@@ -10,7 +10,7 @@ export const MemberList: React.SFC<Props> = props => {
     const { getMembers, isLoading, members } = props;
 
     useEffect(() => {
-        getMembers();
+        members.length === 0 && getMembers();
     }, []);
 
     return (

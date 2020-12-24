@@ -1,5 +1,10 @@
-export type StateProps = {
-    isLoading: boolean;
+export type DispatchProps = {
+    getTransactions(dateRange: object): void;
 };
 
-export type Props = StateProps;
+export type StateProps = {
+    isLoading: boolean;
+    transactions: object[];
+};
+
+export type Props = { ...DispatchProps, ...StateProps };

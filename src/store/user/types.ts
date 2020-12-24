@@ -2,7 +2,9 @@ import { Action } from 'redux';
 
 export enum UserActionTypes {
     ADD_USER = '@@user/ADD_USER',
+
     REMOVE_USER = '@@user/REMOVE_USER',
+
     GET_USERS = '@@user/GET_USERS',
     GET_USERS_SUCCESS = '@@user/GET_USERS_SUCCESS',
     GET_USERS_FAIL = '@@user/GET_USERS_FAIL'

@@ -1,5 +1,11 @@
-export type StateProps = {
-    isLoading: boolean;
+export type DispatchProps = {
+    getMembers(): void;
+    postTransaction(transaction: object): void;
 };
 
-export type Props = StateProps;
+export type StateProps = {
+    isLoading: boolean;
+    members: object[];
+};
+
+export type Props = { ...DispatchProps, ...StateProps };
